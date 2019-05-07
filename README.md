@@ -1,5 +1,7 @@
 # EngeeDatepickerLib
 
+Part of my 100 Days of Code Challenge, writing a standalone datepicker component for Angular.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
 ## Development server
