@@ -7,16 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'engee-datepicker-tester';
+  daysOfTheWeek = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   monthArray = [];
+  monthTitle = '';
 
   ngOnInit() {
-    this.monthArray = this.buildCurrentMonth();
+    const today = new Date();
+    this.monthTitle = today.toLocaleString('en-US', { month: 'long'});
+    this.monthArray = this.buildCurrentMonth(today);
   }
 
-  buildCurrentMonth() {
-    const today = new Date();
-    const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-    const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+  buildCurrentMonth(dateToBuild) {
+    const firstDayOfMonth = new Date(dateToBuild.getFullYear(), dateToBuild.getMonth(), 1);
+    const lastDayOfMonth = new Date(dateToBuild.getFullYear(), dateToBuild.getMonth() + 1, 0);
 
     const DAYS_PER_WEEK = 7;
     const WEEKS_PER_MONTH = 5;
