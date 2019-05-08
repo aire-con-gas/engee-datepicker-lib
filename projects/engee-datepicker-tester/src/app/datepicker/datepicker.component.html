@@ -1,0 +1,25 @@
+<div class="engee-datepicker">
+  <div class="month">
+    <div class="month__Title">{{ monthTitle }}</div>
+    <div class="monthDays__Header">
+      <div class="calendarRow">
+        <div class="calendarItem" *ngFor="let day of daysOfTheWeek">
+          <div class="calendarItem__Label">{{ (day || '&nbsp;' ) }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="weeks">
+      <div class="calendarRow" *ngFor="let week of monthArray">
+        <div
+          (click)="handleClick(dayItem.value)"
+          [ngClass]="{ calendarItem: true, 'calendarItem--selectable': (dayItem || false) }"
+          *ngFor="let dayItem of week"
+        >
+          <div class="calendarItem__Label">
+            {{ dayItem.label }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
