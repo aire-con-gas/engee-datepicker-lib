@@ -4,11 +4,13 @@ import { EngeeDatepickerModule } from 'engee-datepicker';
 
 import { AppComponent } from './app.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
+import { MonthComponent } from './month/month.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    MonthComponent
   ],
   imports: [
     BrowserModule,
