@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-datepicker',
@@ -6,12 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./datepicker.component.scss']
 })
 export class DatepickerComponent implements OnInit {
+  @Input() width = '43%';
+
   months = [];
 
   constructor() {}
 
   ngOnInit() {
     const today = new Date();
-    this.months = ['2019-05', '2019-06'];
+    const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1);
+    this.months = [
+      `${today.getFullYear()}-${today.getMonth() + 1}`,
+      `${nextMonth.getFullYear()}-${nextMonth.getMonth() + 1}`
+    ];
   }
 }

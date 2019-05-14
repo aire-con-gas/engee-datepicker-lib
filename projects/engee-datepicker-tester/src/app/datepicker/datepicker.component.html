@@ -1,4 +1,8 @@
-<div class="engee-datepicker">
+<div class="engee-datepicker" [ngStyle]="{ width: width }">
+  <div class="paginationRow">
+    <div class="paginationPrev"><<</div>
+    <div class="paginationNext">>></div>
+  </div>
   <div class="monthRow">
     <ng-container *ngFor="let month of months">
       <app-month [month]="month"></app-month>

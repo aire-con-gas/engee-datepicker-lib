@@ -27,12 +27,18 @@ $px: 0.0625rem;
   display: flex;
 }
 
+.monthDays__Header {
+  .calendarItem__Label {
+    font-weight: bold;
+  }
+}
+
 .monthRow {
   display: flex;
 }
 
 .month {
-  min-width: 200px;
+  min-width: 300 * $px;
   width: 100%;
 }
 

@@ -3,7 +3,7 @@
   <div class="monthDays__Header">
     <div class="calendarRow">
       <div class="calendarItem" *ngFor="let day of daysOfTheWeek">
-        <div class="calendarItem__Label">{{ day || "&nbsp;" }}</div>
+        <div class="calendarItem__Label">{{ day || '&nbsp;' }}</div>
       </div>
     </div>
   </div>
@@ -13,7 +13,7 @@
         (click)="handleClick(dayItem.value)"
         [ngClass]="{
           calendarItem: true,
-          'calendarItem--selectable': dayItem || false
+          'calendarItem--selectable': isSelectable(dayItem)
         }"
         *ngFor="let dayItem of week"
       >

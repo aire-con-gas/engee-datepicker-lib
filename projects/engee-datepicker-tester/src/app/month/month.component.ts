@@ -68,6 +68,13 @@ export class MonthComponent implements OnInit {
   }
 
   handleClick(dateStr) {
+    if (dateStr === '') {
+      return;
+    }
     console.log('clicked on', dateStr);
+  }
+
+  isSelectable(item) {
+    return item.value !== '';
   }
 }

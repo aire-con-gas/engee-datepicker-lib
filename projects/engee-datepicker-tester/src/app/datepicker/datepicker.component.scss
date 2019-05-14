@@ -6,6 +6,28 @@ $px: 0.0625rem;
   font-size: 14 * $px;
 }
 
+.paginationRow {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 14px;
+}
+
+.paginationPrev {
+  margin-left: 12 * $px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.paginationNext {
+  margin-right: 10 * $px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .monthRow {
   display: flex;
+  justify-content: space-between;
 }
