@@ -1,4 +1,4 @@
-<div class="month">
+<div [ngClass]="{ month: true, 'month--isActive': active }">
   <div class="month__Title">{{ monthTitle }}</div>
   <div class="monthDays__Header">
     <div class="calendarRow">

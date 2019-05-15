@@ -30,4 +30,5 @@ $px: 0.0625rem;
 .monthRow {
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
 }

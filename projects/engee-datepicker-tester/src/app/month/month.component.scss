@@ -38,8 +38,13 @@ $px: 0.0625rem;
 }
 
 .month {
+  display: none;
   min-width: 300 * $px;
   width: 100%;
+}
+
+.month--isActive {
+  display: block;
 }
 
 .month__Title {

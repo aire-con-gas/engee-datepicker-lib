@@ -10,6 +10,7 @@ export class MonthComponent implements OnInit {
   monthArray = [];
   monthTitle = '';
 
+  @Input() active = true;
   @Input() month = '';
 
   constructor() {}
