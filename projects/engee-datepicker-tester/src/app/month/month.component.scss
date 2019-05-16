@@ -1,8 +1,15 @@
 $dayWidth: percentage(1 / 7);
 $px: 0.0625rem;
 
-:host {
-  margin-right: 20 * $px;
+//:host {
+//  margin-right: 20 * $px;
+//}
+
+@keyframes slidein {
+  100% {
+    display: block;
+    left: 0;
+  }
 }
 
 .calendarItem {
@@ -40,11 +47,12 @@ $px: 0.0625rem;
 .month {
   display: none;
   min-width: 300 * $px;
-  width: 100%;
+  width: 90%;
 }
 
 .month--isActive {
   display: block;
+  // animation: slidein 2s ease-in;
 }
 
 .month__Title {
