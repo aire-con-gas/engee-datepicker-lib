@@ -3,12 +3,13 @@
     <div class="paginationPrev" (click)="handlePaginate('prev')"><<</div>
     <div class="paginationNext" (click)="handlePaginate('next')">>></div>
   </div>
-  <div class="monthRow">
-    <ng-container *ngFor="let month of months; let i = index">
-      <app-month
-        [month]="month"
-        [active]="i === currMonth1Idx || i === currMonth2Idx"
-      ></app-month>
-    </ng-container>
-  </div>
+  <div class="transitionWrapper">
+    <div class="monthRow">
+      <ng-container *ngFor="let month of months; let i = index">
+        <app-month
+          [month]="month"
+          [active]="i === currMonth1Idx || i === currMonth2Idx"
+        ></app-month>
+      </ng-container>
+    </div>
 </div>

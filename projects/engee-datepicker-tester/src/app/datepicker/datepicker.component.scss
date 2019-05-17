@@ -9,8 +9,9 @@ $px: 0.0625rem;
 .paginationRow {
   display: flex;
   justify-content: space-between;
-  position: relative;
-  top: 14px;
+  // TODO - Reenable later
+  // position: relative;
+  // top: 14px;
 }
 
 .paginationPrev {
