@@ -1,4 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+
+enum PaginationAction {
+  Next = 'NEXT',
+  Previous = 'PREV'
+}
 
 @Component({
   selector: 'app-datepicker',
@@ -7,30 +12,52 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DatepickerComponent implements OnInit {
   @Input() width = '43%';
+  @ViewChild('transitionWrapper') transitionWrapper;
 
+  activeMonthIndexes = [0, 1];
   months = [];
-  currMonth1Idx = 0;
-  currMonth2Idx = 1;
+  paginationAction = '';
+
+  get isPaginatingNext() {
+    return this.paginationAction === PaginationAction.Next;
+  }
+
+  get isPaginatingPrev() {
+    return this.paginationAction === PaginationAction.Previous;
+  }
 
   constructor() {}
 
+  getPaginationAction() {
+    return this.paginationAction.toLowerCase();
+  }
+
   handlePaginate(action) {
-    if (action === 'next') {
-      this.currMonth1Idx = this.currMonth2Idx;
-      this.currMonth2Idx = this.currMonth1Idx + 1;
+    const [activeIdx1, activeIdx2] = this.activeMonthIndexes;
+    const transitionWrapperClasses = this.transitionWrapper.nativeElement
+      .classList;
+    this.paginationAction = action;
+
+    if (this.isPaginatingNext) {
+      this.activeMonthIndexes = [activeIdx2, activeIdx2 + 1];
     } else {
-      this.currMonth2Idx = this.currMonth1Idx;
-      this.currMonth1Idx = this.currMonth2Idx - 1;
+      this.activeMonthIndexes = [activeIdx1 - 1, activeIdx1];
     }
+  }
+
+  isActive(idx) {
+    return this.activeMonthIndexes.indexOf(idx) !== -1;
   }
 
   ngOnInit() {
     const today = new Date();
     const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1);
-    this.months = [
-      `${today.getFullYear()}-${today.getMonth() + 1}`,
-      `${nextMonth.getFullYear()}-${nextMonth.getMonth() + 1}`,
-      `${nextMonth.getFullYear()}-${nextMonth.getMonth() + 2}`
-    ];
+    this.months = [`${today.getFullYear()}-${today.getMonth() + 1}`];
+
+    for (let i = 1; i < 5; i++) {
+      this.months.push(
+        `${nextMonth.getFullYear()}-${nextMonth.getMonth() + i}`
+      );
+    }
   }
 }

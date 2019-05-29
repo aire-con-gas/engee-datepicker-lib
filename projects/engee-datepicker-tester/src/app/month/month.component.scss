@@ -45,14 +45,14 @@ $px: 0.0625rem;
 }
 
 .month {
-  display: none;
+  display: block;
+  visibility: visible;
   min-width: 300 * $px;
   width: 90%;
 }
 
-.month--isActive {
-  display: block;
-  // animation: slidein 2s ease-in;
+.month--isHidden {
+  display: none;
 }
 
 .month__Title {

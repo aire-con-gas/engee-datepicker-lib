@@ -1,5 +1,23 @@
 $px: 0.0625rem;
 
+@keyframes slideInFromRight {
+  0% {
+    transform: translate(300px);
+  }
+  100% {
+    transform: translate(0px);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translate(-300px);
+  }
+  100% {
+    transform: translate(0px);
+  }
+}
+
 .engee-datepicker {
   box-sizing: border-box;
   font-family: 'HelveticaNeue-Medium', Helvetica, Arial, sans-serif;
@@ -32,4 +50,19 @@ $px: 0.0625rem;
   display: flex;
   justify-content: space-evenly;
   overflow: hidden;
+}
+
+.transitionWrapper {
+  &--foo {
+    display: none;
+  }
+
+  &--next {
+    animation: slideInFromRight 1s ease;
+    display: block;
+  }
+  &--prev {
+    animation: slideInFromLeft 1s ease;
+    display: block;
+  }
 }

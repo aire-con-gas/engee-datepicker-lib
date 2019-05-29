@@ -1,15 +1,20 @@
 <div class="engee-datepicker" [ngStyle]="{ width: width }">
   <div class="paginationRow">
-    <div class="paginationPrev" (click)="handlePaginate('prev')"><<</div>
-    <div class="paginationNext" (click)="handlePaginate('next')">>></div>
+    <div class="paginationPrev" (click)="handlePaginate('PREV')"><<</div>
+    <div class="paginationNext" (click)="handlePaginate('NEXT')">>></div>
   </div>
-  <div class="transitionWrapper">
+  <div
+    [appEngeeTransition]="getPaginationAction()"
+    [ngClass]="{
+      transitionWrapper: true,
+      'transitionWrapper--foo': isPaginatingNext || isPaginatingPrev
+    }"
+    #transitionWrapper
+  >
     <div class="monthRow">
       <ng-container *ngFor="let month of months; let i = index">
-        <app-month
-          [month]="month"
-          [active]="i === currMonth1Idx || i === currMonth2Idx"
-        ></app-month>
+        <app-month [month]="month" [active]="isActive(i)"></app-month>
       </ng-container>
     </div>
+  </div>
 </div>

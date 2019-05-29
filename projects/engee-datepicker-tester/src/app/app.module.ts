@@ -5,12 +5,14 @@ import { EngeeDatepickerModule } from 'engee-datepicker';
 import { AppComponent } from './app.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { MonthComponent } from './month/month.component';
+import { EngeeTransitionDirective } from './engee-transition.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     DatepickerComponent,
-    MonthComponent
+    MonthComponent,
+    EngeeTransitionDirective
   ],
   imports: [
     BrowserModule,
