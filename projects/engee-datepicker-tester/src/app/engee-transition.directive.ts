@@ -13,7 +13,10 @@ import {
   selector: '[appEngeeTransition]'
 })
 export class EngeeTransitionDirective implements OnChanges {
-  @Input() appEngeeTransition: string;
+  @Input('appEngeeTransition') payload: {
+    action: string;
+    activeIndices: any[];
+  };
 
   constructor(private renderer: Renderer2, private el: ElementRef) {}
 
@@ -33,14 +36,28 @@ export class EngeeTransitionDirective implements OnChanges {
     return this;
   }
 
-  ngOnChanges() {
-    console.log('>>>', this.appEngeeTransition);
-    this.removeClasses('transitionWrapper--next transitionWrapper--prev');
-    if (this.appEngeeTransition !== '') {
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('changes', changes);
+    const { currentValue, previousValue } = changes.payload;
+
+    console.log('currentValue', currentValue);
+    console.log('previousValue', previousValue);
+
+    if (
+      currentValue.action !== '' &&
+      currentValue.activeIndices.join('') !==
+        previousValue.activeIndices.join('')
+    ) {
+      console.log('do stuff');
+      this.removeClasses('transitionWrapper--next transitionWrapper--prev');
       this.addClasses('transitionWrapper--foo');
       setTimeout(() => {
+        // this.renderer.removeClass(
+        //   this.el.nativeElement,
+        //   'transitionWrapper--foo'
+        // );
         this.removeClasses('transitionWrapper--foo');
-        this.addClasses(`transitionWrapper--${this.appEngeeTransition}`);
+        this.addClasses(`transitionWrapper--${currentValue.action}`);
       }, 200);
     }
   }

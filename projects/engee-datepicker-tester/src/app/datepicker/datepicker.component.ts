@@ -14,7 +14,7 @@ export class DatepickerComponent implements OnInit {
   @Input() width = '43%';
   @ViewChild('transitionWrapper') transitionWrapper;
 
-  activeMonthIndexes = [0, 1];
+  activeMonthIndices = [0, 1];
   months = [];
   paginationAction = '';
 
@@ -29,24 +29,25 @@ export class DatepickerComponent implements OnInit {
   constructor() {}
 
   getPaginationAction() {
-    return this.paginationAction.toLowerCase();
+    return {
+      action: this.paginationAction.toLowerCase(),
+      activeIndices: this.activeMonthIndices
+    };
   }
 
   handlePaginate(action) {
-    const [activeIdx1, activeIdx2] = this.activeMonthIndexes;
-    const transitionWrapperClasses = this.transitionWrapper.nativeElement
-      .classList;
+    const [activeIdx1, activeIdx2] = this.activeMonthIndices;
     this.paginationAction = action;
 
     if (this.isPaginatingNext) {
-      this.activeMonthIndexes = [activeIdx2, activeIdx2 + 1];
+      this.activeMonthIndices = [activeIdx2, activeIdx2 + 1];
     } else {
-      this.activeMonthIndexes = [activeIdx1 - 1, activeIdx1];
+      this.activeMonthIndices = [activeIdx1 - 1, activeIdx1];
     }
   }
 
   isActive(idx) {
-    return this.activeMonthIndexes.indexOf(idx) !== -1;
+    return this.activeMonthIndices.indexOf(idx) !== -1;
   }
 
   ngOnInit() {

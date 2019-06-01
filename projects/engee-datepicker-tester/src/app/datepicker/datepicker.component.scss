@@ -56,13 +56,10 @@ $px: 0.0625rem;
   &--foo {
     display: none;
   }
-
   &--next {
-    animation: slideInFromRight 2s ease;
-    // display: block;
+    animation: slideInFromRight 1s ease;
   }
   &--prev {
     animation: slideInFromLeft 1s ease;
-    // display: block;
   }
 }
