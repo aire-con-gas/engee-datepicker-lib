@@ -58,11 +58,11 @@ $px: 0.0625rem;
   }
 
   &--next {
-    animation: slideInFromRight 1s ease;
-    display: block;
+    animation: slideInFromRight 2s ease;
+    // display: block;
   }
   &--prev {
     animation: slideInFromLeft 1s ease;
-    display: block;
+    // display: block;
   }
 }
